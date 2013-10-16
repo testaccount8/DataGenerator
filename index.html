@@ -28,37 +28,146 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="overview-welcome" class="anchor" href="#overview-welcome"><span class="octicon octicon-link"></span></a>Overview {#welcome}</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>The purpose of the DataGenerator is to provide a common tool for generating test data and JTAF scripts that achieve an increased level of automation coverage across multiple FINRA projects.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>As input, a user provides a specification of the variables for which data will be generated in an .xls file called a 'dataspec'. In addition to the dataspec, a user may also provide a visio diagram that captures the branch logic to be exercised. Based on these inputs, the DataGenerator can be asked come up with combinations of values, called 'datasets' that cover positive and negative scenarios, or that exhaustively exercise the branch logic.</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Once the datasets are generated, their contents (i.e. variable and values) will be supplied to user-written template files using the Apache Velocity templating language. This enables auto-generation of any text-based file, such as xml, html, or csv, based on the contents of a dataset.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p><strong>Help</strong></p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p><strong>Run Modes</strong>
+usage: java -jar DataDynamo-xxxx.xxxx-SNAPSHOT.jar -dataspec  [-branchgraph ] -templates  [-config ] -out  [options]</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p><strong>Options</strong></p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>-allCombos Generates datasets that cover all possible combinations of positive values. Careful, this could be a lot.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>-allEdges Generates datasets that cover all edges of a branch diagram. A subset of allPaths.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>-allPaths Generates datasets that cover all possible paths through a branch diagram.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>-branchgraph  Directory or file containing branchgraph</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>-config  Properties file for templating</p>
+
+<p>-dataspec  Directory or file containing dataspec</p>
+
+<p>-f Clean output directory without prompt if pre-existing.</p>
+
+<p>-help Print this message</p>
+
+<p>-isoNeg Generates datasets that cover each negative value in isolation.</p>
+
+<p>-isoPos Generates datasets that cover each positive value in isolation.</p>
+
+<p>-out  Output directory where templated output will be written</p>
+
+<p>-pairwise Generates datasets that cover all pairwise combinations of positive values. Ignores groups.</p>
+
+<p>-templates  Directory or file containing templates</p>
+
+<p><strong>Branch Graph Annotations</strong></p>
+
+<p>|| key || val ||
+| createVariable |  |
+| createVariable | , |
+| .createVariable |  |
+| .createVariable | , |
+| | |
+| createGroup |  |
+| createGroup | , |
+| .createGroup |  |
+| .createGroup | , |
+| | |
+| .setProperty | , |
+| ..setProperty | , |
+| | |
+| .checkProperty | , |
+| ..checkProperty | , |</p>
+
+<p><strong>Samples:</strong></p>
+
+<p>TBD</p>
+
+<p><strong>Template syntax</strong></p>
+
+<p>$dataset</p>
+
+<p>$dataset.allVariables()</p>
+
+<p>$dataset.getGroupsOfType()</p>
+
+<p>$dataset.getGroup</p>
+
+<p>$dataset.getVariablesOfType()</p>
+
+<p>$dataset.get()</p>
+
+<p>$datasetCounter</p>
+
+<p>$group.getType()</p>
+
+<p>$group.getAlias()</p>
+
+<p>For perGroup templates, the handle:</p>
+
+<p>$keyGroup</p>
+
+<p>Will refer the group instance associated with the current template</p>
+
+<p>When Using Global Template</p>
+
+<p>$allDatasets --&gt; e.g. #foreach ($dataset in $allDatasets)</p>
+
+<p><strong>Misc</strong></p>
+
+<p><strong>Apache Velocity User Guide:</strong></p>
+
+<p><a href="http://velocity.apache.org/engine/devel/user-guide.html">http://velocity.apache.org/engine/devel/user-guide.html</a></p>
+
+<h2>
+<a name="documents" class="anchor" href="#documents"><span class="octicon octicon-link"></span></a>Documents</h2>
+
+<p><strong>StackEdit</strong> stores your documents in the browser local storage, which means all your documents are automatically saved locally and are accessible offline.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> This also means that your documents are not shared between different browsers or computers and that clearing your browser's data may <strong>delete all of them!</strong></p>
+</blockquote>
+
+<h4>
+<a name="-create-a-document" class="anchor" href="#-create-a-document"><span class="octicon octicon-link"></span></a><i></i> Create a document</h4>
+
+<p>You can create a new document by clicking the <i></i> button in the navigation bar. This will switch from the current document to the new one.</p>
+
+<h4>
+<a name="-switch-to-another-document" class="anchor" href="#-switch-to-another-document"><span class="octicon octicon-link"></span></a><i></i> Switch to another document</h4>
+
+<p>You can list all your local documents and switch from one to another by clicking the <i></i> button in the navigation bar.</p>
+
+<h4>
+<a name="-rename-a-document" class="anchor" href="#-rename-a-document"><span class="octicon octicon-link"></span></a><i></i> Rename a document</h4>
+
+<p>You can rename the current document by clicking the document title in the navigation bar.</p>
+
+<h4>
+<a name="-delete-a-document" class="anchor" href="#-delete-a-document"><span class="octicon octicon-link"></span></a><i></i> Delete a document</h4>
+
+<p>You can delete the current document by clicking the <i></i> button in the navigation bar.</p>
+
+<h4>
+<a name="-save-a-document" class="anchor" href="#-save-a-document"><span class="octicon octicon-link"></span></a><i></i> Save a document</h4>
+
+<p>You can save the current document to a file using the <i></i> <code>Save as...</code> sub-menu.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> See <a href="#publish-a-document"><i></i> Publish a document</a> section for a description of the different outputs.</p>
+</blockquote>
+
+<hr>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/FINRAOS">FINRAOS</a></p>
