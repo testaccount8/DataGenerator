@@ -3,31 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Data Generator by FINRAOS</title>
-
+    <title>Data Generator by wnilkamal</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/wnilkamal/DataGenerator">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/wnilkamal/DataGenerator/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/wnilkamal/DataGenerator/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
     <div class="wrapper">
-      <header>
-        <h1>Data Generator</h1>
-        <p>Primary goals of test automation should be increased coverage, decreased manual effort and flexibility to accommodate changing requirements.  DataGenerator is a new testing tool that supports these goals. This tool supports requirements specification and test case specification in terms of work  flows and data equivalence classes. By using templates, the format of the test data produced is highly customizable, and has the ability to include  dynamically calculated test expectations. The combined use of straightforward specification inputs, tool-assured test case coverage, and  customizable output enables a tester to achieve increased coverage in less time, while maintaining the flexibility to adapt to requirements changes.  In an agile software development environment, modifications to the specification input and output templates are all that’s required to get the tests re-generated.  This reduces time spent on test case generation and requirements gathering and alleviates gaps between requirements and test cases generated which  strengthens behavior-driven development.</p>
 
-        <p class="view"><a href="https://github.com/FINRAOS/DataGenerator">View the Project on GitHub <small>FINRAOS/DataGenerator</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/FINRAOS/DataGenerator/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/FINRAOS/DataGenerator/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/FINRAOS/DataGenerator">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
       <section>
+        <div id="title">
+          <h1>Data Generator</h1>
+          <p>Primary goals of test automation should be increased coverage, decreased manual effort and flexibility to accommodate changing requirements.  DataGenerator is a new testing tool that supports these goals. This tool supports requirements specification and test case specification in terms of work  flows and data equivalence classes. By using templates, the format of the test data produced is highly customizable, and has the ability to include  dynamically calculated test expectations. The combined use of straightforward specification inputs, tool-assured test case coverage, and  customizable output enables a tester to achieve increased coverage in less time, while maintaining the flexibility to adapt to requirements changes.  In an agile software development environment, modifications to the specification input and output templates are all that’s required to get the tests re-generated.  This reduces time spent on test case generation and requirements gathering and alleviates gaps between requirements and test cases generated which  strengthens behavior-driven development.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/wnilkamal">wnilkamal</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
         <h1>
 <a name="overview-welcome" class="anchor" href="#overview-welcome"><span class="octicon octicon-link"></span></a>Overview {#welcome}</h1>
 
@@ -169,12 +179,9 @@ usage: java -jar DataDynamo-xxxx.xxxx-SNAPSHOT.jar -dataspec  [-branchgraph ] -t
 
 <hr>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/FINRAOS">FINRAOS</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
