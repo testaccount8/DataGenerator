@@ -1,0 +1,17 @@
+<h1>Data Generator</h1>
+
+<h2>Summary</h2>
+
+<p>The purpose of the Data Generator is to provide a tool for generating test data given its pattern specifications. Generating the test data automatically in turn helps achieve an increased level of coverage and helps automate the testing process.</p>
+
+<p>The input is a user provided specification of the variables in an .xls file that is refered to as the <em>dataspec</em>. In addition to the dataspec, a user may also provide a visio diagram that captures a simplified state diagram, capturing the <em>branch logic</em> that should be executed while generating the data. Based on these inputs, DataGenerator can generate combinations of values called <em>datasets</em> that cover positive and negative scenarios, or optionally exhaustively apply the branch logic to generate a full coverage dataset.</p>
+
+<p>Once the datasets are generated, their contents (i.e. variable and values) will be supplied to user-written template files using the Apache Velocity templating language. This enables auto-generation of any text-based file, such as xml, html, or csv, based on the contents of a dataset.</p>
+
+<p><a href="./quickstart.html">Quick start</a></p>
+
+<p><a href="./docs/v1.0/javadoc/index.html">API Docs</a></p>
+
+<p><a href="./discussion.html">Discussion</a></p>
+
+<p><a href="./downloads.html">Downloads</a></p>
