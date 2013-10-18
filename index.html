@@ -1,0 +1,201 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Data Generator</title>
+  <meta name="description" content="Primary goals of test automation should be increased coverage, decreased manual effort and flexibility to accommodate changing requirements.  DataGenerator is a new testing tool that supports these goals. This tool supports requirements specification and test case specification in terms of work  flows and data equivalence classes. By using templates, the format of the test data produced is highly customizable, and has the ability to include  dynamically calculated test expectations. The combined use of straightforward specification inputs, tool-assured test case coverage, and  customizable output enables a tester to achieve increased coverage in less time, while maintaining the flexibility to adapt to requirements changes.  In an agile software development environment, modifications to the specification input and output templates are all that’s required to get the tests re-generated.  This reduces time spent on test case generation and requirements gathering and alleviates gaps between requirements and test cases generated which  strengthens behavior-driven development.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Data Generator</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Primary goals of test automation should be increased coverage, decreased manual effort and flexibility to accommodate changing requirements.  DataGenerator is a new testing tool that supports these goals. This tool supports requirements specification and test case specification in terms of work  flows and data equivalence classes. By using templates, the format of the test data produced is highly customizable, and has the ability to include  dynamically calculated test expectations. The combined use of straightforward specification inputs, tool-assured test case coverage, and  customizable output enables a tester to achieve increased coverage in less time, while maintaining the flexibility to adapt to requirements changes.  In an agile software development environment, modifications to the specification input and output templates are all that’s required to get the tests re-generated.  This reduces time spent on test case generation and requirements gathering and alleviates gaps between requirements and test cases generated which  strengthens behavior-driven development.</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/mibrahim/DataGenerator/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/mibrahim/DataGenerator/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/mibrahim/DataGenerator" class="code">View Data Generator on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="overview-welcome" class="anchor" href="#overview-welcome"><span class="octicon octicon-link"></span></a>Overview {#welcome}</h1>
+
+<p>The purpose of the DataGenerator is to provide a common tool for generating test data and JTAF scripts that achieve an increased level of automation coverage across multiple FINRA projects.</p>
+
+<p>As input, a user provides a specification of the variables for which data will be generated in an .xls file called a 'dataspec'. In addition to the dataspec, a user may also provide a visio diagram that captures the branch logic to be exercised. Based on these inputs, the DataGenerator can be asked come up with combinations of values, called 'datasets' that cover positive and negative scenarios, or that exhaustively exercise the branch logic.</p>
+
+<p>Once the datasets are generated, their contents (i.e. variable and values) will be supplied to user-written template files using the Apache Velocity templating language. This enables auto-generation of any text-based file, such as xml, html, or csv, based on the contents of a dataset.</p>
+
+<p><strong>Help</strong></p>
+
+<p><strong>Run Modes</strong>
+usage: java -jar DataDynamo-xxxx.xxxx-SNAPSHOT.jar -dataspec  [-branchgraph ] -templates  [-config ] -out  [options]</p>
+
+<p><strong>Options</strong></p>
+
+<p>-allCombos Generates datasets that cover all possible combinations of positive values. Careful, this could be a lot.</p>
+
+<p>-allEdges Generates datasets that cover all edges of a branch diagram. A subset of allPaths.</p>
+
+<p>-allPaths Generates datasets that cover all possible paths through a branch diagram.</p>
+
+<p>-branchgraph  Directory or file containing branchgraph</p>
+
+<p>-config  Properties file for templating</p>
+
+<p>-dataspec  Directory or file containing dataspec</p>
+
+<p>-f Clean output directory without prompt if pre-existing.</p>
+
+<p>-help Print this message</p>
+
+<p>-isoNeg Generates datasets that cover each negative value in isolation.</p>
+
+<p>-isoPos Generates datasets that cover each positive value in isolation.</p>
+
+<p>-out  Output directory where templated output will be written</p>
+
+<p>-pairwise Generates datasets that cover all pairwise combinations of positive values. Ignores groups.</p>
+
+<p>-templates  Directory or file containing templates</p>
+
+<p><strong>Branch Graph Annotations</strong></p>
+
+<p>|| key || val ||
+| createVariable |  |
+| createVariable | , |
+| .createVariable |  |
+| .createVariable | , |
+| | |
+| createGroup |  |
+| createGroup | , |
+| .createGroup |  |
+| .createGroup | , |
+| | |
+| .setProperty | , |
+| ..setProperty | , |
+| | |
+| .checkProperty | , |
+| ..checkProperty | , |</p>
+
+<p><strong>Samples:</strong></p>
+
+<p>TBD</p>
+
+<p><strong>Template syntax</strong></p>
+
+<p>$dataset</p>
+
+<p>$dataset.allVariables()</p>
+
+<p>$dataset.getGroupsOfType()</p>
+
+<p>$dataset.getGroup</p>
+
+<p>$dataset.getVariablesOfType()</p>
+
+<p>$dataset.get()</p>
+
+<p>$datasetCounter</p>
+
+<p>$group.getType()</p>
+
+<p>$group.getAlias()</p>
+
+<p>For perGroup templates, the handle:</p>
+
+<p>$keyGroup</p>
+
+<p>Will refer the group instance associated with the current template</p>
+
+<p>When Using Global Template</p>
+
+<p>$allDatasets --&gt; e.g. #foreach ($dataset in $allDatasets)</p>
+
+<p><strong>Misc</strong></p>
+
+<p><strong>Apache Velocity User Guide:</strong></p>
+
+<p><a href="http://velocity.apache.org/engine/devel/user-guide.html">http://velocity.apache.org/engine/devel/user-guide.html</a></p>
+
+<h2>
+<a name="documents" class="anchor" href="#documents"><span class="octicon octicon-link"></span></a>Documents</h2>
+
+<p><strong>StackEdit</strong> stores your documents in the browser local storage, which means all your documents are automatically saved locally and are accessible offline.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> This also means that your documents are not shared between different browsers or computers and that clearing your browser's data may <strong>delete all of them!</strong></p>
+</blockquote>
+
+<h4>
+<a name="-create-a-document" class="anchor" href="#-create-a-document"><span class="octicon octicon-link"></span></a><i></i> Create a document</h4>
+
+<p>You can create a new document by clicking the <i></i> button in the navigation bar. This will switch from the current document to the new one.</p>
+
+<h4>
+<a name="-switch-to-another-document" class="anchor" href="#-switch-to-another-document"><span class="octicon octicon-link"></span></a><i></i> Switch to another document</h4>
+
+<p>You can list all your local documents and switch from one to another by clicking the <i></i> button in the navigation bar.</p>
+
+<h4>
+<a name="-rename-a-document" class="anchor" href="#-rename-a-document"><span class="octicon octicon-link"></span></a><i></i> Rename a document</h4>
+
+<p>You can rename the current document by clicking the document title in the navigation bar.</p>
+
+<h4>
+<a name="-delete-a-document" class="anchor" href="#-delete-a-document"><span class="octicon octicon-link"></span></a><i></i> Delete a document</h4>
+
+<p>You can delete the current document by clicking the <i></i> button in the navigation bar.</p>
+
+<h4>
+<a name="-save-a-document" class="anchor" href="#-save-a-document"><span class="octicon octicon-link"></span></a><i></i> Save a document</h4>
+
+<p>You can save the current document to a file using the <i></i> <code>Save as...</code> sub-menu.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> See <a href="#publish-a-document"><i></i> Publish a document</a> section for a description of the different outputs.</p>
+</blockquote>
+
+<hr>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/mibrahim" class="avatar"><img src="https://2.gravatar.com/avatar/7e46e71e0248f8bd993c89f995bb9f7c?d=https%3A%2F%2Fidenticons.github.com%2Fcc54bbb5a5c34e59af890056f2fbcdc1.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/mibrahim">mibrahim</a> maintains <a href="https://github.com/mibrahim/DataGenerator">Data Generator</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/mibrahim/DataGenerator/tarball/master" class="tar">tar</a><a href="https://github.com/mibrahim/DataGenerator/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
