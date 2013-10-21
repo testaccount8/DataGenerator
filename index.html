@@ -1,19 +1,59 @@
-<h1>Data Generator</h1>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Data Generator by FINRAOS</title>
 
-<h2>Summary</h2>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Data Generator</h1>
+        <p>Primary goals of test automation should be increased coverage, decreased manual effort and flexibility to accommodate changing requirements.  DataGenerator is a new testing tool that supports these goals. This tool supports requirements specification and test case specification in terms of work  flows and data equivalence classes. By using templates, the format of the test data produced is highly customizable, and has the ability to include  dynamically calculated test expectations. The combined use of straightforward specification inputs, tool-assured test case coverage, and  customizable output enables a tester to achieve increased coverage in less time, while maintaining the flexibility to adapt to requirements changes.  In an agile software development environment, modifications to the specification input and output templates are all that’s required to get the tests re-generated.  This reduces time spent on test case generation and requirements gathering and alleviates gaps between requirements and test cases generated which  strengthens behavior-driven development.</p>
+
+        <p class="view"><a href="https://github.com/FINRAOS/DataGenerator">View the Project on GitHub <small>FINRAOS/DataGenerator</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/FINRAOS/DataGenerator/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/FINRAOS/DataGenerator/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/FINRAOS/DataGenerator">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="data-generator" class="anchor" href="#data-generator"><span class="octicon octicon-link"></span></a>Data Generator</h1>
+
+<h2>
+<a name="summary" class="anchor" href="#summary"><span class="octicon octicon-link"></span></a>Summary</h2>
 
 <p>The purpose of the Data Generator is to provide a tool for generating test data given its pattern specifications. Generating the test data automatically in turn helps achieve an increased level of coverage and helps automate the testing process.</p>
 
-<p>The input is a user provided specification of the variables in an .xls file that is refered to as the <em>dataspec</em>. In addition to the dataspec, a user may also provide a visio diagram that captures a simplified state diagram, capturing the <em>branch logic</em> that should be executed while generating the data. Based on these inputs, DataGenerator can generate combinations of values called <em>datasets</em> that cover positive and negative scenarios, or optionally exhaustively apply the branch logic to generate a full coverage dataset.</p>
+<p>The input is a user provided specification of the variables in an .xls file that is refered to as the dataspec. In addition to the dataspec, a user may also provide a visio diagram that captures a simplified state diagram, capturing the branch logic that should be executed while generating the data. Based on these inputs, DataGenerator can generate combinations of values called datasets that cover positive and negative scenarios, or optionally exhaustively apply the branch logic to generate a full coverage dataset.</p>
 
 <p>Once the datasets are generated, their contents (i.e. variable and values) will be supplied to user-written template files using the Apache Velocity templating language. This enables auto-generation of any text-based file, such as xml, html, or csv, based on the contents of a dataset.</p>
 
-<p><a href="./quickstart.html">Quick start</a></p>
+<p><a href="quickstart.html">Quick start</a></p>
 
-<p><a href="./docs/v1.0/javadoc/index.html">API Docs</a></p>
+<p>API Docs</p>
 
-<p><a href="./discussion.html">Discussion</a></p>
+<p>Discussion</p>
 
-<p><a href="./downloads.html">Downloads</a></p>
-
-<p><a href="./faqs.html">FAQs</a></p>
+<p>Downloads</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/FINRAOS">FINRAOS</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
